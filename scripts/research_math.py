@@ -56,6 +56,50 @@ def implied_eps(price, required_return, years, terminal_pe):
     return {"required_terminal_eps_not_forecast": result}
 
 
+def exposure(portfolio_value, positions, limit):
+    """Bounds for one category in a long-only, unlevered portfolio.
+
+    Unlisted portfolio value is unknown, not cash. Each row has value,
+    known_fraction (in this category), and unknown_fraction (unclassified).
+    """
+    portfolio_value = checked(portfolio_value, "portfolio_value", strict=True)
+    limit = checked(limit, "limit", maximum=1)
+    if not isinstance(positions, list):
+        raise ValueError("positions: a JSON array is required")
+    amounts, known_amounts, unknown_amounts = [], [], []
+    for index, row in enumerate(positions):
+        if not isinstance(row, dict):
+            raise ValueError(f"positions[{index}]: an object is required")
+        prefix = f"positions[{index}]"
+        value = checked(row.get("value"), f"{prefix}.value")
+        known = checked(row.get("known_fraction"), f"{prefix}.known_fraction", maximum=1)
+        unknown = checked(row.get("unknown_fraction"), f"{prefix}.unknown_fraction", maximum=1)
+        if known + unknown > 1:
+            raise ValueError(f"{prefix}: known_fraction + unknown_fraction must be <= 1")
+        amounts.append(value)
+        known_amounts.append(value * known)
+        unknown_amounts.append(value * unknown)
+    try:
+        listed = math.fsum(amounts)
+        if listed > portfolio_value and not math.isclose(listed, portfolio_value, rel_tol=1e-12):
+            raise ValueError("listed positions exceed portfolio_value; check double counting")
+        known_value = math.fsum(known_amounts)
+        unknown_value = math.fsum(unknown_amounts) + max(0, portfolio_value - listed)
+    except OverflowError:
+        raise ValueError("calculation overflow") from None
+    lower = min(1, known_value / portfolio_value)
+    upper = min(1, (known_value + unknown_value) / portfolio_value)
+    if lower > limit:
+        status = "known_breach"
+    elif upper <= limit:
+        status = "within_given_bounds_only"
+    else:
+        status = "insufficient_information"
+    return {"lower_fraction": lower, "upper_fraction": upper,
+            "known_amount": known_value, "unknown_amount": unknown_value,
+            "single_constraint_status_not_allocation_verdict": status}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="mode", required=True)
@@ -65,10 +109,15 @@ def main():
     i = sub.add_parser("implied", help="no-dividend conditional EPS requirement")
     for flag in ("price", "required-return", "years", "terminal-pe"):
         i.add_argument(f"--{flag}", required=True, type=float)
+    e = sub.add_parser("exposure", help="long-only category bounds; unlisted amounts are unknown")
+    e.add_argument("--portfolio-value", required=True, type=float)
+    e.add_argument("--limit", required=True, type=float)
+    e.add_argument("--positions", required=True, type=json.loads,
+                   help="JSON array: value, known_fraction, unknown_fraction per position")
     args = vars(parser.parse_args())
     mode = args.pop("mode")
     try:
-        result = supply(**args) if mode == "supply" else implied_eps(**args)
+        result = {"supply": supply, "implied": implied_eps, "exposure": exposure}[mode](**args)
     except ValueError as error:
         parser.error(str(error))
     print(json.dumps({"assumptions": args, "result": result,
