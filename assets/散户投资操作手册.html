@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>散户投资操作手册 · 六大痛点规则化</title>
+<style>
+  :root{
+    --blue:#185FA5; --blue-deep:#0C447C; --blue-bg:#E6F1FB;
+    --red:#A32D2D; --red-bg:#FCEBEB;
+    --green:#0F6E56; --green-bg:#E1F5EE;
+    --amber:#854F0B; --amber-bg:#FAEEDA;
+    --text:#1a1a1a; --muted:#666; --border:#e5e7eb; --card-bg:#FAFAF8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    color:var(--text); background:#fff; line-height:1.7; font-size:15px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+  header{border-bottom:3px solid var(--blue-deep);padding-bottom:24px;margin-bottom:32px;}
+  header h1{font-size:26px;font-weight:600;color:var(--blue-deep);letter-spacing:1px;}
+  header .sub{color:var(--muted);margin-top:8px;font-size:14px;}
+  .meta{margin-top:12px;font-size:13px;color:var(--muted);}
+  nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
+  nav a{
+    display:inline-block;padding:6px 14px;background:var(--blue-bg);color:var(--blue-deep);
+    border-radius:20px;text-decoration:none;font-size:13px;border:1px solid #c9dff2;
+  }
+  nav a:hover{background:var(--blue);color:#fff;}
+  section{margin-bottom:48px;scroll-margin-top:20px;}
+  .pain{
+    display:inline-block;background:var(--red-bg);color:var(--red);
+    padding:4px 12px;border-radius:4px;font-size:13px;font-weight:600;margin-bottom:10px;
+  }
+  h2{font-size:20px;color:var(--blue-deep);margin-bottom:16px;font-weight:600;border-left:4px solid var(--blue);padding-left:12px;}
+  h3{font-size:15px;margin:20px 0 10px;color:var(--blue-deep);font-weight:600;}
+  p{margin-bottom:12px;}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  th{background:var(--blue-bg);color:var(--blue-deep);font-weight:600;text-align:left;}
+  th,td{padding:9px 12px;border:1px solid var(--border);vertical-align:top;}
+  tr:nth-child(even) td{background:var(--card-bg);}
+  .rule{
+    background:var(--blue-bg);border-left:4px solid var(--blue);padding:12px 16px;
+    border-radius:0 8px 8px 0;margin:14px 0;font-size:15px;
+  }
+  .rule b{color:var(--blue-deep);}
+  .forbid{
+    background:var(--red-bg);border-left:4px solid var(--red);padding:12px 16px;
+    border-radius:0 8px 8px 0;margin:14px 0;
+  }
+  .forbid b{color:var(--red);}
+  .allow{
+    background:var(--green-bg);border-left:4px solid var(--green);padding:12px 16px;
+    border-radius:0 8px 8px 0;margin:14px 0;
+  }
+  .allow b{color:var(--green);}
+  .note{background:var(--amber-bg);border-left:4px solid #BA7517;padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:14px;}
+  .note b{color:var(--amber);}
+  ul,ol{padding-left:22px;margin-bottom:12px;}
+  li{margin-bottom:6px;}
+  .formula{
+    text-align:center;font-size:18px;background:var(--card-bg);border:1px solid var(--border);
+    border-radius:8px;padding:16px;margin:16px 0;font-weight:600;color:var(--blue-deep);
+  }
+  .formula small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:6px;}
+  footer{border-top:1px solid var(--border);padding-top:20px;margin-top:56px;font-size:13px;color:var(--muted);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0;}
+  .step{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 12px;}
+  .step .n{color:var(--blue);font-weight:700;font-size:13px;}
+  .step .t{font-weight:600;color:var(--blue-deep);margin:4px 0;font-size:14px;}
+  .step .d{font-size:13px;color:var(--muted);}
+  @media(max-width:600px){.steps{grid-template-columns:repeat(2,1fr);}}
+  @media print{
+    nav{display:none;} body{font-size:13px;} section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>散户投资操作手册</h1>
+  <div class="sub">六大痛点 × 规则化解法 · 只讲可执行的规则，不讲道理</div>
+  <div class="meta">整理日期：2026-09-09 ｜ 适用：A 股 + 场内外基金 ｜ 配套体系：三层资金分层 + 年度周期</div>
+</header>
+
+<nav>
+  <a href="#s1">① 板块怎么选</a>
+  <a href="#s2">② 标的怎么挑</a>
+  <a href="#s3">③ 持有多久</a>
+  <a href="#s4">④ 加减仓规则</a>
+  <a href="#s5">⑤ 情绪管理</a>
+  <a href="#s6">⑥ 股价由什么决定</a>
+  <a href="#s9">⑨ 下跌解剖</a>
+  <a href="#s7">⑦ 年度循环</a>
+  <a href="#s8">⑧ 买入前模板</a>
+  <a href="#s10">⑩ 思想溯源</a>
+</nav>
+
+<!-- ==================== ① ==================== -->
+<section id="s1">
+  <span class="pain">痛点 ①</span>
+  <h2>不知道选哪个板块</h2>
+
+  <div class="rule"><b>规则：只用三个硬指标筛板块，每月一次，一次 30 分钟。</b>不追当日热点，热点轮动的速度比你下单快。</div>
+
+  <table>
+    <tr><th style="width:22%">指标</th><th style="width:40%">标准</th><th>在哪看（免费）</th></tr>
+    <tr>
+      <td>产业趋势</td>
+      <td>未来 2 年行业盈利增速 &gt; 10%，且<b>有高频数据佐证</b>（出货量 / 订单 / 价格 / 产能利用率）</td>
+      <td>行业深度报告、产业链新闻、上市公司业绩预告汇总</td>
+    </tr>
+    <tr>
+      <td>估值分位</td>
+      <td>行业 PE 处于近 5 年 <b>50% 分位以下</b>优先；&gt; 70% 分位回避</td>
+      <td>中证指数官网 / 韭圈儿 / 理杏仁</td>
+    </tr>
+    <tr>
+      <td>资金验证</td>
+      <td>公募调研次数上升趋势、板块成交占比回升</td>
+      <td>同花顺 / 东方财富行业板块页（看 60 日，别看 1 日）</td>
+    </tr>
+  </table>
+
+  <div class="forbid"><b>纪律红线：</b>同时跟踪的板块 ≤ 3 个。超过 3 个 = 没有跟踪能力，等于没有跟踪。核心仓（50% 以上）永远给宽基指数，行业只做卫星仓。</div>
+
+  <div class="note"><b>为什么是估值分位：</b>好板块买贵了照样亏两年。2021 年追新能源、2015 年追互联网的人，方向全对，死在价格上。</div>
+</section>
+
+<!-- ==================== ② ==================== -->
+<section id="s2">
+  <span class="pain">痛点 ②</span>
+  <h2>不知道选板块里的哪只股票 / 哪只基金</h2>
+
+  <h3>默认答案：基金，尤其是 ETF</h3>
+  <p>散户的对手盘是全职机构。选个股 = 在别人的主场打球。ETF 透明、低费率、不怕个股爆雷，是板块观点的标准载体。</p>
+
+  <table>
+    <tr><th style="width:30%">类型</th><th>筛选标准</th></tr>
+    <tr>
+      <td>行业 ETF（三看）</td>
+      <td>① 规模 &gt; 2 亿（回避清盘风险）② 费率 &lt; 0.5% ③ 日成交额 &gt; 1000 万（流动性）</td>
+    </tr>
+    <tr>
+      <td>主动基金（四看）</td>
+      <td>① 成立 &gt; 5 年 ② 现任经理任职 &gt; 3 年 ③ 近 5 年年化为正且回撤小于同类均值 ④ 规模 2–100 亿（太小清盘风险，太大掉头难）</td>
+    </tr>
+  </table>
+
+  <h3>如果一定要选个股（门槛在这，不是热情）</h3>
+  <ul>
+    <li><b>卡位四条件</b>：不可替代、量价齐升、认证壁垒（进供应链要 1–3 年）、供给刚性（扩产 &gt; 1 年）——四个全中才进观察池</li>
+    <li><b>财务硬线</b>：营收增速 &gt; 15%、ROE &gt; 12%、经营现金流为正，一条不满足直接淘汰</li>
+    <li><b>只做板块内市值前 3 的龙头</b>，不做"二线补涨"的梦——补涨逻辑 = 你已经是最后知道的人</li>
+  </ul>
+
+  <div class="forbid"><b>禁止：</b>因为"代码好记""别人推荐""跌了很多"而买入。买入的唯一合法理由写在下一节的四行模板里。</div>
+</section>
+
+<!-- ==================== ③ ==================== -->
+<section id="s3">
+  <span class="pain">痛点 ③</span>
+  <h2>买了之后，不知道持有多长时间</h2>
+
+  <div class="rule"><b>规则：持有期不是一个独立问题——它由买入理由决定。</b>买入时写清理由，持有期自动确定。</div>
+
+  <table>
+    <tr><th style="width:34%">买入理由</th><th style="width:30%">对应持有期</th><th>卖出触发</th></tr>
+    <tr><td>估值修复（低估买入）</td><td>月级别，3–12 个月</td><td>估值回到中位数附近，兑现即走</td></tr>
+    <tr><td>产业趋势（业绩驱动）</td><td>年级别，1–3 年</td><td>产业数据连续两个季度恶化才卖</td></tr>
+    <tr><td>写不出理由</td><td>—</td><td><b>不配买入</b>，这不是持有期问题，是入场资格问题</td></tr>
+  </table>
+
+  <div class="forbid"><b>禁止：</b>"拿着看看""跌了就当长线"。没有卖出条件的持有不是耐心，是逃避决策——这正是"赚的拿不住、亏的扛成股东"的成因。</div>
+</section>
+
+<!-- ==================== ④ ==================== -->
+<section id="s4">
+  <span class="pain">痛点 ④</span>
+  <h2>什么情况减仓，什么情况加仓</h2>
+
+  <div class="rule"><b>规则：白名单制。加仓、减仓各有且仅有三种合法情形，白名单之外的操作一律禁止。</b>把这张表存在手机里，冲动时打开对照。</div>
+
+  <h3>加仓（仅三种）</h3>
+  <table>
+    <tr><th style="width:24%">情形</th><th>执行方式</th></tr>
+    <tr><td>① 定投日</td><td>每月固定日期，无条件执行，跌了照买——这是纪律，不是判断</td></tr>
+    <tr><td>② 再平衡</td><td>某类资产偏离目标比例 ±5% 以上，卖多补少调回目标</td></tr>
+    <tr><td>③ 计划内补仓</td><td>买入当天写好："跌到 X 价补 Y 成，最多补 Z 次"——没写在计划里的补仓都是扛单</td></tr>
+  </table>
+
+  <h3>减仓（仅三种）</h3>
+  <table>
+    <tr><th style="width:24%">情形</th><th>执行方式</th></tr>
+    <tr><td>① 触发卖出条件</td><td>认错线跌破 / 兑现线到达 / 买入理由兑现——买入时已写好</td></tr>
+    <tr><td>② 再平衡</td><td>涨太多的资产偏离目标 ±5%，落袋调回</td></tr>
+    <tr><td>③ 基本面证伪</td><td>产业数据 / 业绩 / 逻辑变坏——注意是"基本面变了"，不是"价格跌了"</td></tr>
+  </table>
+
+  <div class="forbid"><b>白名单之外的全部禁止：</b>因为大跌而恐慌卖出、因为大涨而兴奋追加、因为"感觉不对"而调仓。你的"感觉"是市场上最贵的多余品。</div>
+</section>
+
+<!-- ==================== ⑤ ==================== -->
+<section id="s5">
+  <span class="pain">痛点 ⑤</span>
+  <h2>经常被大跌大涨影响</h2>
+
+  <p>情绪不是靠"修炼心态"解决的——心态是仓位的函数。<b>仓位对了，情绪自然好；仓位错了，心态修炼到出家也没用。</b></p>
+
+  <h3>三道防线</h3>
+  <table>
+    <tr><th style="width:22%">防线</th><th>做法</th></tr>
+    <tr><td>① 仓位防线</td><td>权益仓位 = 假设它明天腰斩、你的生活完全不受影响的量。反推：如果 −30% 的浮亏会让你失眠，不是心态差，是仓位错了，减仓直到睡得着</td></tr>
+    <tr><td>② 频率防线</td><td>每周固定时间看一次账户；关掉所有行情推送。每天盯盘的人，注定被波动收割——你不是在投资，是在给券商打工</td></tr>
+    <tr><td>③ 预演防线</td><td>买入前写下："如果它跌 30%，我怎么做？"——把答案提前写好，跌的时候照做，<b>不重新思考</b>。跌的时候人的智商平均下降 30 点</td></tr>
+  </table>
+
+  <div class="note"><b>事实锚点（背下来）：</b>A 股每年都会出现一波 10–20% 的回撤，这是常态不是意外。年波动 25% 左右的资产，长期年化才有 8–10%。波动不是风险的全部，<b>波动是收益的成本</b>——你付不了这个成本，就领不到这份收益。</div>
+</section>
+
+<!-- ==================== ⑥ ==================== -->
+<section id="s6">
+  <span class="pain">痛点 ⑥</span>
+  <h2>哪些因素影响股价的变化</h2>
+
+  <div class="formula">
+    股价 = 盈利（EPS） × 估值（PE）
+    <small>这是唯一需要背下来的公式，其余一切波动都是它的两因子游戏</small>
+  </div>
+
+  <table>
+    <tr><th style="width:26%">时间尺度</th><th style="width:30%">主导因素</th><th>散户的应对</th></tr>
+    <tr><td>天 / 周 / 月</td><td>资金 + 情绪（流动性、风格轮动、消息、突发）</td><td><b>不可预测，不响应。</b>这部分是噪音，试图预测噪音的人都在为券商贡献手续费</td></tr>
+    <tr><td>季度 / 年</td><td>盈利（业绩、订单、产业趋势）</td><td><b>可跟踪，这是主战场。</b>财报、产业高频数据、订单和价格</td></tr>
+  </table>
+
+  <h3>每次手痒想操作前，先过三问</h3>
+  <ol>
+    <li><b>盈利逻辑变了吗？</b>——看财报、订单、产业数据，不看股价</li>
+    <li><b>还是只是估值 / 情绪在波动？</b>——盈利没变的价格波动 = 噪音</li>
+    <li><b>我当初写下的卖出条件触发了吗？</b>——白名单里有没有它</li>
+  </ol>
+
+  <div class="allow"><b>三问都是"否" → 正确动作是：什么都不做。</b>记住：不操作也是一种操作，而且通常是收益最高的那种。</div>
+
+  <div class="forbid"><b>大多数人亏钱的机制：</b>把估值波动（噪音）误判为盈利变化（信号）而频繁操作；反过来，对真正的盈利恶化（信号）视而不见，死扛到底。方向正好做反。</div>
+</section>
+
+<!-- ==================== ⑨ ==================== -->
+<section id="s9">
+  <span class="pain">实战工具</span>
+  <h2>下跌解剖法：区分噪音与信号</h2>
+
+  <div class="rule"><b>规则：任何大幅下跌当天，花五分钟做解剖——把触发因素逐条列出，每条问一句"这伤到盈利了吗？"</b>全部没伤到 = 噪音型下跌，白名单动作 = 无；有任何一条伤到 = 信号，重新走四问。</div>
+
+  <h3>实战案例：2026 年 7 月光模块 / CPO 下跌（截至 7/30）</h3>
+  <table>
+    <tr><th style="width:50%">价格层（跌了 44–58%）</th><th>基本面层（一项没被证伪）</th></tr>
+    <tr>
+      <td>
+        跨界竞争"小作文"两次引爆恐慌（7/17、7/28）<br>
+        龙头 H 股发行价较 A 股折价 21%，定价锚重构<br>
+        "循环融资"担忧 + 全球科技股共振（日经 −5.8%、SK 海力士 −14%）<br>
+        极致拥挤交易被动出清，60 日主力净流出超 4000 亿
+      </td>
+      <td>
+        订单覆盖 2026 全年，部分落地至 2027–2028<br>
+        龙头中报 +78%~262%，1.6T 产能缺口约 40%<br>
+        龙头宣布 40–80 亿回购<br>
+        谷歌上调 capex 至 1950–2050 亿美元；外资大行集体上调目标价
+      </td>
+    </tr>
+  </table>
+
+  <div class="allow"><b>判定：所有触发因素都在资金与情绪层，盈利逻辑零损伤 → 噪音型下跌。</b>按体系，正确动作是"什么都不做"——用产业数据而非股价决定去留。</div>
+
+  <h3>人心挤兑：拥挤度与踩踏机制</h3>
+  <p>7 月案例最深层的原因，是<b>拥挤交易的正反馈循环</b>——也就是"人心挤兑"：</p>
+  <ul>
+    <li><b>上行正反馈</b>：板块涨 → 基金业绩好 → 申购涌入 → 基金被迫加仓 → 继续涨。案例：押注光模块的某基金规模一季度暴增 210%（91 亿 → 287 亿）</li>
+    <li><b>下行踩踏</b>：下跌 → 净值回撤 → 持有人赎回 → 基金被迫卖出 → 跌更多 → 更多赎回。案例：7/28 单日 141 只主动基金净值跌超 10%，高位申购的资金成为连环止损的抛压主力</li>
+    <li><b>关键认知</b>：机构不是不想拿，是持有人不允许它拿。机构被赎回绑架、被迫在低点卖出——而<b>散户没有强制卖出方，这是散户对机构唯一的结构性优势</b></li>
+    <li><b>前提</b>：优势成立需要两个条件——你的钱是长钱（没人逼你卖）+ 仓位扛得住（−40% 不影响生活）。缺一个，你就会变成踩踏的一部分</li>
+  </ul>
+
+  <div class="note"><b>拥挤度是可观测指标：</b>行业成交额占全市场比重的历史分位。拥挤度 90 分位以上 = 踩踏风险积聚 = <b>不加仓信号</b>（不是卖出信号）。免费渠道：券商投顾周报（如东财财富号行业估值拥挤度周更）。</div>
+
+  <h3>下跌后的三大验证信号（预测该预测的东西）</h3>
+  <table>
+    <tr><th style="width:22%">信号</th><th style="width:44%">看什么</th><th>性质</th></tr>
+    <tr><td>业绩信号</td><td>中报/季报兑现度、回购与增持落地进度</td><td rowspan="3">前两个是投资者该跟踪的（有数据、可证伪）；量价信号是交易者的事，不归不盯盘的人管</td></tr>
+    <tr><td>产业信号</td><td>下游 capex 指引、订单与价格边际变化、扩产进度</td></tr>
+    <tr><td>量价信号</td><td>缩量止跌、不创新低、收复跳空缺口</td></tr>
+  </table>
+
+  <div class="forbid"><b>最后一条铁律：</b>即使所有判断都正确，产业趋势持有法的代价就是承受极端回撤（本案例 44–58%）。能扛住的唯一前提：仓位（腰斩不影响生活）+ 长钱（不被迫在最低点卖出）。判断正确救不了仓位错误。</div>
+</section>
+
+<!-- ==================== ⑦ ==================== -->
+<section id="s7">
+  <span class="pain">流程框架</span>
+  <h2>年度周期：把上面所有规则串起来</h2>
+
+  <div class="steps">
+    <div class="step"><div class="n">① 年初定盘</div><div class="t">1 月，一天搞定</div><div class="d">资金分层 + 定配置比例 + 定再平衡规则</div></div>
+    <div class="step"><div class="n">② 年内守纪</div><div class="t">全年</div><div class="d">只执行白名单，不响应热点与情绪</div></div>
+    <div class="step"><div class="n">③ 季度归因</div><div class="t">每季 15 分钟</div><div class="d">四问：赚亏多少 / 市场给多少 / 风格给多少 / 自己给多少</div></div>
+    <div class="step"><div class="n">④ 年底迭代</div><div class="t">12 月</div><div class="d">留什么 / 改什么 / 扔什么 → 成为明年年初的配置依据</div></div>
+  </div>
+
+  <div class="forbid"><b>关键区别：</b>一年周期 = 决策与复盘的节拍，<b>不是年底清仓的理由</b>。年年清仓重来 = 复利每 12 个月断裂一次 + 把运气当方法。资金滚动进入下一年，方法每年迭代一次。</div>
+
+  <div class="note"><b>先分层再投资：</b>任何配置动作之前，先算出未来 12 个月的确定支出（生活 + 大额 + 应急），这笔钱放货基 / 短债，是全体系的铁律地基。权益仓位多少，取决于你能在 −30% 时睡得着，而不是取决于你有多看好。</div>
+</section>
+
+<!-- ==================== ⑧ ==================== -->
+<section id="s8">
+  <span class="pain">立即可用</span>
+  <h2>买入前四行模板（抄这一页就够）</h2>
+
+  <p>每一笔买入之前，填完这张表。填不出来 = 没有入场资格。这张表就是你的"交易牌照"。</p>
+
+  <table>
+    <tr><th style="width:18%">字段</th><th style="width:44%">要求</th><th>示例</th></tr>
+    <tr><td><b>① 理由</b></td><td>一句可证伪的话："我认为 X 会在 Y 内发生，因为 Z"。写不出 Z 就别买</td><td>"我认为行业订单会持续超预期，因为龙头已锁明年产能"</td></tr>
+    <tr><td><b>② 卖出条件</b></td><td>必须两条：认错线（跌破 __ / 逻辑证伪）+ 兑现线（涨到 __ / 逻辑兑现）</td><td>认错：跌破 60 日线且产业数据转负；兑现：估值回到 5 年 60% 分位</td></tr>
+    <tr><td><b>③ 仓位</b></td><td>按信心度：试仓 5% / 常规 10–15% / 高信心 20–25%；单标的 ≤20%，单行业 ≤30%</td><td>常规仓 10%，跌到 X 再补 5%，最多补 1 次</td></tr>
+    <tr><td><b>④ 时限</b></td><td>多久兑现。到点没兑现 → 重新评估，禁止用"再等等"续命</td><td>2 个季度内验证订单逻辑</td></tr>
+  </table>
+
+  <div class="rule">
+    <b>这套手册的全部内容，浓缩成一句话：</b><br>
+    用规则替代判断，用仓位替代心态，用 written plan 替代临场发挥——<b>你不需要变得更聪明，你需要变得更机械。</b>
+  </div>
+</section>
+
+<!-- ==================== ⑩ ==================== -->
+<section id="s10">
+  <span class="pain">思想出处</span>
+  <h2>思想溯源：每条规则背后的大师</h2>
+
+  <p>手册里的规则不是凭空发明，是过去一百年投资思想的操作面蒸馏。用法：<b>执行规则时知道出处即可，不必先读理论再投资。</b>读书跟着阶段走，不跟着书单走。</p>
+
+  <table>
+    <tr><th style="width:16%">大师</th><th style="width:42%">核心思想</th><th>蒸馏进了哪条规则</th></tr>
+    <tr><td><b>格雷厄姆</b></td><td>安全边际；市场先生（Mr. Market）为你服务，而不是指挥你</td><td>估值分位 ≤50% 才入候选；下跌解剖法——市场先生的报价你利用他，不听命于他</td></tr>
+    <tr><td><b>巴菲特</b></td><td>能力圈；护城河；长坡厚雪</td><td>板块跟踪 ≤3 个（能力圈）；卡位四条件（护城河）；持有期由买入理由决定</td></tr>
+    <tr><td><b>芒格</b></td><td>逆向思维："知道我会死在哪，我就永远不去那"</td><td>白名单制——加仓减仓各仅三种情形，白名单之外一律不去</td></tr>
+    <tr><td><b>费雪</b></td><td>闲聊法（scuttlebutt）：从产业链、客户、竞争对手处获取一手信息</td><td>产业高频数据验证；看招股书、电话会、订单，不看二手解读</td></tr>
+    <tr><td><b>林奇</b></td><td>六类公司分而治之；"投资你了解的东西"</td><td>持有期由买入理由决定（不同类型的钱不同玩法）；估值锚里"市值 ÷ 可寻址市场"</td></tr>
+    <tr><td><b>霍华德·马克斯</b></td><td>周期与钟摆；"买好的，不如买得好"；第二层思维</td><td>拥挤度分位（钟摆位置）；估值分位（赔率）；半导体 178 亿流入 vs 90 分位 = 好公司 ≠ 好投资</td></tr>
+    <tr><td><b>段永平</b></td><td>不懂不做；买股票就是买公司；敢为天下后</td><td>写不出理由 = 不配买入；不做二线补涨梦 = 不做自己不懂的博弈</td></tr>
+    <tr><td><b>冯柳</b></td><td>弱者体系：承认没有信息优势，用赔率与位置补偿</td><td>左侧低分位布局（"没人要 + 有逻辑"）；拥挤度规避；整套手册就是散户版的弱者体系</td></tr>
+  </table>
+
+  <div class="note"><b>进阶阅读时机（不是书单，是路线）：</b>① 现在：《聪明的投资者》第 8、20 章（市场先生 + 安全边际）、《投资最重要的事》讲周期的章节——直接支撑当下操作。② 做完第一年归因后：巴菲特股东信、段永平问答录——"买股票就是买公司"需要实盘体感才有滋味。③ 真的开始选个股后：费雪《怎样选择成长股》、林奇《彼得·林奇的成功投资》。</div>
+</section>
+
+<footer>
+  <p>免责声明：本手册为个人投资方法整理，不构成任何投资建议。所有指标阈值（估值分位、财务硬线、仓位比例）为通用经验值，应结合个人资金状况调整。市场有风险，投资需谨慎。</p>
+</footer>
+
+</div>
+</body>
+</html>
